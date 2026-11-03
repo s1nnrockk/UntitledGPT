@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080b12">
-<title>BlueChat — AI</title>
+<title>UntitledGPT — AI</title>
 <style>
 :root{color-scheme:dark;--bg:#080b12;--panel:#0d121c;--panel2:#111a27;--line:#202c3c;--text:#e8f0fa;--muted:#8393a8;--blue:#38a8ff;--blue2:#1479d5}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -58,13 +58,13 @@ textarea::placeholder{color:#61748a}
 <body>
 <div class="app">
 <aside class="sidebar">
-<div class="brand"><div class="logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5v14M7 7l10 10M17 7 7 17" stroke="white" stroke-width="1.7" stroke-linecap="round"/></svg></div>BlueChat</div>
+<div class="brand"><div class="logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5v14M7 7l10 10M17 7 7 17" stroke="white" stroke-width="1.7" stroke-linecap="round"/></svg></div>UntitledGPT</div>
 <button class="new" id="newChat"><span>＋</span> Новый чат</button>
 <div class="section">Недавние</div><div class="history" id="history"></div>
 <div class="sidebottom">Powered by LLM7.io<br>Free AI · gpt-oss:20b</div>
 </aside>
 <main class="main">
-<header class="topbar"><div class="model"><span class="dot"></span> BlueChat <span class="tag">GPT-OSS 20B</span></div><div class="topright"><span class="status" id="status">Бесплатная модель · онлайн API</span><button class="iconbtn" id="clear" title="Очистить чат">↻</button></div></header>
+<header class="topbar"><div class="model"><span class="dot"></span> UntitledGPT <span class="tag">GPT-OSS 20B</span></div><div class="topright"><span class="status" id="status">Бесплатная модель · онлайн API</span><button class="iconbtn" id="clear" title="Очистить чат">↻</button></div></header>
 <div class="messages" id="messages"><div class="thread" id="thread"></div></div>
 <div class="composerwrap"><form class="composer" id="form"><textarea id="prompt" rows="1" placeholder="Напиши сообщение..." aria-label="Сообщение"></textarea><div class="composerfoot"><span>Enter — отправить · Shift+Enter — новая строка</span><button class="send" id="send" aria-label="Отправить">↑</button></div></form><div class="notice">Ответы генерируются внешним сервисом LLM7.io. Не отправляй пароли и личные данные.</div></div>
 </main>
@@ -75,8 +75,8 @@ const MODEL='gpt-oss:20b';
 const $=id=>document.getElementById(id);
 let chats=[],active=null,busy=false;
 function makeChat(){return {id:crypto.randomUUID(),title:'Новый чат',messages:[]}}
-function save(){try{localStorage.setItem('bluechat-chats',JSON.stringify(chats))}catch{}}
-function load(){try{chats=JSON.parse(localStorage.getItem('bluechat-chats')||'[]')}catch{chats=[]}if(!chats.length)chats=[makeChat()];active=chats[0].id;renderHistory();renderChat()}
+function save(){try{localStorage.setItem('untitledgpt-chats',JSON.stringify(chats))}catch{}}
+function load(){try{chats=JSON.parse(localStorage.getItem('untitledgpt-chats')||'[]')}catch{chats=[]}if(!chats.length)chats=[makeChat()];active=chats[0].id;renderHistory();renderChat()}
 function current(){return chats.find(c=>c.id===active)}
 function escapeHTML(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function renderHistory(){$('history').innerHTML=chats.map(c=>'<button class="chatitem '+(c.id===active?'active':'')+'" data-id="'+c.id+'">◌ '+escapeHTML(c.title)+'</button>').join('');$('history').querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>{active=b.dataset.id;renderHistory();renderChat()})}
