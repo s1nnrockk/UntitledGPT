@@ -14,3 +14,8 @@ Open `index.html` in a browser. Requests are sent directly from the browser to L
 ## GitHub Pages
 
 To publish, enable GitHub Pages for the repository and choose the `main` branch with `/ (root)` as the source. The app will be available at `/untitledgpt/`.
+
+
+## Image generation
+
+The composer includes an image-generation mode backed by Pollinations' legacy anonymous image endpoint (`image.pollinations.ai`). It requires no API key and runs remotely, but anonymous access is rate-limited and may be unavailable; the app reports failures in the chat. Generated images are shown inline and the prompt/image URL are saved with the local chat history.
