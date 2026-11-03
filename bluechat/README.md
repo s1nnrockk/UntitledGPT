@@ -1,4 +1,4 @@
-# BlueChat
+# UntitledGPT
 
 A dark blue/black AI chat interface powered by the LLM7.io OpenAI-compatible API.
 
@@ -13,4 +13,4 @@ Open `index.html` in a browser. Requests are sent directly from the browser to L
 
 ## GitHub Pages
 
-To publish, enable GitHub Pages for the repository and choose the `main` branch with `/ (root)` as the source. The app will be available at `/bluechat/`.
+To publish, enable GitHub Pages for the repository and choose the `main` branch with `/ (root)` as the source. The app will be available at `/untitledgpt/`.
